@@ -15,11 +15,19 @@ class Bootstrap extends Yaf\Bootstrap_Abstract {
 		Yaf\Registry::set('config', $arrConfig);
 	}
 
-	public function _initPlugin(Yaf\Dispatcher $dispatcher) {
+	public function _initLoader()
+	{
+		/**
+         *  Yaf\Loader::import是根据路径引入
+		 */
+		 Yaf\Loader::import(APPLICATION_PATH . "/vendor/autoload.php");
+	}
+
+	/*public function _initPlugin(Yaf\Dispatcher $dispatcher) {
 		//注册一个插件
 		$objSamplePlugin = new SamplePlugin();
 		$dispatcher->registerPlugin($objSamplePlugin);
-	}
+	}*/
 
 	public function _initRoute(Yaf\Dispatcher $dispatcher) {
 		//在这里注册自己的路由协议,默认使用简单路由
@@ -29,5 +37,7 @@ class Bootstrap extends Yaf\Bootstrap_Abstract {
 	
 	public function _initView(Yaf\Dispatcher $dispatcher) {
 		//在这里注册自己的view控制器，例如smarty,firekylin
+		$twig = new Twig(APPLICATION_PATH . '/application/views', Yaf\Registry::get('config')->twig->toArray());
+		$dispatcher->setView($twig);
 	}
 }
