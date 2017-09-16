@@ -1,4 +1,4 @@
-!.gitkeep
 #My configurations:
 application.ini
-yaf/storage/twig/
+/yaf/storage/twig/*
+!/yaf/storage/twig/.gitkeep
