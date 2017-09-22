@@ -2,6 +2,10 @@ body {
     background: #f8f8f8;
 }
 
+body.pushable>.pusher {
+    background: #f8f8f8;
+}
+
 .ui.navbar {
     background: #fff;
 }
@@ -14,12 +18,21 @@ body {
     overflow: hidden;
 }
 
+.ui.navbar .menu-icon {
+    align-self: center;
+    transition: all .5s;
+}
+
+.ui.navbar .menu-icon i {
+    cursor: pointer;
+}
+
 .ui.navbar .banner {
     align-self: center;
     transition: all .5s;
 }
 
-.ui.navbar .banner > img {
+.ui.navbar .banner>img {
     padding: 8px;
     width: 98px;
     box-sizing: content-box;
@@ -50,6 +63,7 @@ body {
     align-self: center;
     cursor: pointer;
 }
+
 .ui.navbar .search-form {
     position: absolute;
     transform: translateY(-120px);
@@ -57,12 +71,72 @@ body {
     opacity: 0;
 }
 
-.ui.navbar .searching ~ .search-form {
+.ui.navbar .searching~.search-form {
     transform: translateY(-50px);
     opacity: 1;
 }
 
-.ui.navbar .searching .banner, .ui.navbar .searching .menu {
+.ui.navbar .searching .banner,
+.ui.navbar .searching .menu,
+.ui.navbar .searching .menu-icon {
     transform: translateY(80px);
     opacity: 0;
+}
+
+.ui.sidebar {
+    background: #fff;
+}
+
+.ui.sidebar .menu {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.ui.sidebar .menu .item {
+    padding: 16px;
+    padding-right: 24px;
+    font-size: 18px;
+    color: #000;
+}
+
+.ui.sidebar .menu .item.active {
+    background: #f8f8f8;
+}
+
+.ui.sidebar .menu .item:hover {
+    background: #fbfbfb;
+}
+
+.ui.sidebar .close-icon {
+    height: 50px;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+@media only screen and (min-width:767px) {
+    .ui.navbar .menu-icon {
+        display: none;
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .ui.navbar .banner>img {
+        width: 56px;
+    }
+    .ui.navbar .content {
+        justify-content: space-between;
+    }
+    .ui.navbar .content .menu {
+        display: none;
+    }
+    .ui.navbar .search-icon {
+        flex-grow: 0;
+    }
+    .ui.navbar .searching~.search-form {
+        transform: translateY(-40px);
+        opacity: 1;
+    }
 }

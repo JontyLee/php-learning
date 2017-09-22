@@ -11,7 +11,7 @@ requirejs.config({
         }
     },
     map: {
-        '*':{
+        '*': {
             'css': 'css.min'
         }
     }
@@ -24,5 +24,12 @@ requirejs(['jquery', 'semanticUI'], ($, semanticUI) => {
         } else {
             icon.text('search').parents('.content').removeClass('searching');
         }
-    })
+    });
+    $('.ui.sidebar')
+        .sidebar('setting', 'dimPage', false)
+        .sidebar('attach events', '.ui.navbar .menu-icon')
+        .sidebar('attach events', '.ui.sidebar .close-icon');
+    $('.ui.navbar .menu')
+    .clone()
+    .appendTo('.ui.sidebar');
 });
