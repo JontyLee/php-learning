@@ -1,0 +1,68 @@
+body {
+    background: #f8f8f8;
+}
+
+.ui.navbar {
+    background: #fff;
+}
+
+.ui.navbar .content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    position: relative;
+    overflow: hidden;
+}
+
+.ui.navbar .banner {
+    align-self: center;
+    transition: all .5s;
+}
+
+.ui.navbar .banner > img {
+    padding: 8px;
+    width: 98px;
+    box-sizing: content-box;
+}
+
+.ui.navbar .menu {
+    margin-left: 56px;
+    transition: all .4s;
+}
+
+.ui.navbar .menu .item {
+    display: inline-block;
+    font-size: 18px;
+    color: #000;
+    margin-left: 24px;
+    margin-right: 24px;
+    padding-bottom: 32px;
+    padding-top: 24px;
+}
+
+.ui.navbar .menu .item.active {
+    border-bottom: 2px solid #000;
+}
+
+.ui.navbar .search-icon {
+    flex-grow: 1;
+    text-align: right;
+    align-self: center;
+    cursor: pointer;
+}
+.ui.navbar .search-form {
+    position: absolute;
+    transform: translateY(-120px);
+    transition: all .5s;
+    opacity: 0;
+}
+
+.ui.navbar .searching ~ .search-form {
+    transform: translateY(-50px);
+    opacity: 1;
+}
+
+.ui.navbar .searching .banner, .ui.navbar .searching .menu {
+    transform: translateY(80px);
+    opacity: 0;
+}
