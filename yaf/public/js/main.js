@@ -1,22 +1,9 @@
 'use strict';
-
-requirejs.config({
-    paths: {
-        jquery: 'jquery.min',
-        semanticUI: '../semantic/dist/semantic.min'
-    },
-    shim: {
-        semanticUI: {
-            deps: ['jquery']
-        }
-    },
-    map: {
-        '*': {
-            'css': 'css.min'
-        }
-    }
+requirejs(['base'], () => {
+    require(['index']);
 });
-requirejs(['jquery', 'semanticUI'], ($, semanticUI) => {
+
+define('index', ['jquery', 'semanticUI'], ($, semanticUI) => {
     $('.ui.navbar .search-icon > i').click(function () {
         let icon = $(this);
         if (icon.text() === 'search') {
@@ -30,6 +17,6 @@ requirejs(['jquery', 'semanticUI'], ($, semanticUI) => {
         .sidebar('attach events', '.ui.navbar .menu-icon')
         .sidebar('attach events', '.ui.sidebar .close-icon');
     $('.ui.navbar .menu')
-    .clone()
-    .appendTo('.ui.sidebar');
+        .clone()
+        .appendTo('.ui.sidebar');
 });
